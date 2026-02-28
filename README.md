@@ -7,8 +7,6 @@ description: The modern data pipeline platform for teams that move fast.
 
 **DataFlow** is an open-source data pipeline platform that makes it easy to build, test, and deploy data workflows. Connect any source, transform your data, and deliver it anywhere — all with simple configuration files.
 
-![DataFlow Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop)
-
 > [!tip] New to DataFlow?
 > Start with the [[getting-started/quickstart|Quickstart Guide]] to build your first pipeline in under 5 minutes.
 
@@ -35,13 +33,13 @@ graph LR
 
 ## Quick links
 
-| Section | Description |
-|---------|-------------|
+| Section                                        | Description                     |
+| ---------------------------------------------- | ------------------------------- |
 | [[getting-started/installation\|Installation]] | Install DataFlow on your system |
-| [[getting-started/quickstart\|Quickstart]] | Build your first pipeline |
-| [[concepts/architecture\|Architecture]] | Understand how DataFlow works |
-| [[guides/connecting-databases\|Guides]] | Step-by-step tutorials |
-| [[api-reference/client\|API Reference]] | Complete API documentation |
+| [[getting-started/quickstart\|Quickstart]]     | Build your first pipeline       |
+| [[concepts/architecture\|Architecture]]        | Understand how DataFlow works   |
+| [[guides/connecting-databases\|Guides]]        | Step-by-step tutorials          |
+| [[api-reference/client\|API Reference]]        | Complete API documentation      |
 
 ## Example pipeline
 
