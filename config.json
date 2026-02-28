@@ -1,0 +1,83 @@
+{
+  "logo": "⚗️",
+  "title": "Acme Documentation",
+  "showSidebar": true,
+  "nav": {
+    "title": "Acme Documentation",
+    "links": [
+      {
+        "href": "#",
+        "name": "Docs"
+      },
+      {
+        "href": "#",
+        "name": "Blog"
+      },
+      {
+        "href": "#",
+        "name": "Changelog"
+      }
+    ],
+    "cta": {
+      "name": "Sign In",
+      "href": "#"
+    }
+  },
+  "footer": {
+    "navigation": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "href": "#",
+            "name": "Docs"
+          },
+          {
+            "href": "#",
+            "name": "Blog"
+          },
+          {
+            "href": "#",
+            "name": "Changelog"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "href": "#",
+            "name": "Terms"
+          },
+          {
+            "href": "#",
+            "name": "Privacy"
+          }
+        ]
+      }
+    ]
+  },
+  "social": [
+    {
+      "label": "github",
+      "href": "#",
+      "name": "GitHub"
+    },
+    {
+      "label": "x",
+      "href": "#",
+      "name": "X"
+    },
+    {
+      "label": "reddit",
+      "href": "#",
+      "name": "Reddit"
+    },
+    {
+      "label": "discord",
+      "href": "#",
+      "name": "Discord"
+    }
+  ],
+  "showEditLink": true
+}
