@@ -4,7 +4,7 @@ title: Architecture
 
 # Architecture
 
-DataFlow is designed as a lightweight, embeddable pipeline engine. This page explains how data moves through the system and what happens at each stage.
+Acme is designed as a lightweight, embeddable pipeline engine. This page explains how data moves through the system and what happens at each stage.
 
 ## High-level overview
 
@@ -17,7 +17,7 @@ flowchart TB
         S4[REST API]
     end
 
-    subgraph Engine ["DataFlow Engine"]
+    subgraph Engine ["Acme Engine"]
         direction TB
         EX[Extractor] --> BUF[Buffer]
         BUF --> TP[Transform Pipeline]
@@ -45,7 +45,7 @@ flowchart TB
 The extractor connects to the configured source and pulls data. For databases, this means executing the configured query. For file sources, it reads and parses the file.
 
 > [!info] Incremental extraction
-> By default, DataFlow tracks the last successful run time and passes it as `:last_run` to your source query. This means you only process new and updated rows.
+> By default, Acme tracks the last successful run time and passes it as `:last_run` to your source query. This means you only process new and updated rows.
 
 ```yaml
 sources:
@@ -59,8 +59,8 @@ Extracted rows are buffered in memory in configurable batch sizes. This controls
 
 ```yaml
 defaults:
-  batch_size: 5000      # rows per batch
-  buffer_memory: 256mb  # max memory for buffering
+  batch_size: 5000 # rows per batch
+  buffer_memory: 256mb # max memory for buffering
 ```
 
 ### 3. Transform pipeline
@@ -98,16 +98,16 @@ Rows that fail validation are logged and optionally sent to a dead-letter queue.
 
 The loader writes batches to the configured destination. Write modes include:
 
-| Mode | Behavior |
-|------|----------|
-| `append` | Always insert new rows |
-| `replace` | Drop and recreate the table |
-| `upsert` | Insert or update based on a key column |
-| `merge` | Advanced merge with custom logic |
+| Mode      | Behavior                               |
+| --------- | -------------------------------------- |
+| `append`  | Always insert new rows                 |
+| `replace` | Drop and recreate the table            |
+| `upsert`  | Insert or update based on a key column |
+| `merge`   | Advanced merge with custom logic       |
 
 ## Concurrency model
 
-DataFlow uses a producer-consumer model:
+Acme uses a producer-consumer model:
 
 ```mermaid
 sequenceDiagram
@@ -125,7 +125,7 @@ sequenceDiagram
     Note over E,L: Batches processed in parallel
 ```
 
-By default, DataFlow uses 4 transform workers. This can be configured:
+By default, Acme uses 4 transform workers. This can be configured:
 
 ```yaml
 defaults:
@@ -137,7 +137,7 @@ defaults:
 
 ## State management
 
-Pipeline state is stored locally in `.dataflow/runs/`. Each run creates a JSON metadata file:
+Pipeline state is stored locally in `.acme/runs/`. Each run creates a JSON metadata file:
 
 ```json
 {

@@ -58,8 +58,8 @@ POST /api/v1/transforms/:name/test
 ```json
 {
   "input": [
-    {"name": "Alice", "age": 28},
-    {"name": "Bob", "age": 16}
+    { "name": "Alice", "age": 28 },
+    { "name": "Bob", "age": 16 }
   ],
   "config": {
     "condition": "age >= 18"
@@ -72,9 +72,7 @@ POST /api/v1/transforms/:name/test
 ```json
 {
   "data": {
-    "output": [
-      {"name": "Alice", "age": 28}
-    ],
+    "output": [{ "name": "Alice", "age": 28 }],
     "stats": {
       "input_rows": 2,
       "output_rows": 1,
@@ -89,7 +87,7 @@ POST /api/v1/transforms/:name/test
 ### Applying transforms programmatically
 
 ```python
-from dataflow.sdk import Transform
+from acme.sdk import Transform
 
 # Built-in transform
 filter_transform = Transform.filter(condition="status = 'active'")

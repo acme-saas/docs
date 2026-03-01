@@ -4,17 +4,17 @@ title: Deployment
 
 # Deployment
 
-This guide covers deploying DataFlow pipelines to production environments — from a simple server to containerized infrastructure.
+This guide covers deploying Acme pipelines to production environments — from a simple server to containerized infrastructure.
 
 ## Deployment options
 
 ```mermaid
 graph TD
-    A[DataFlow Pipeline] --> B{Where to deploy?}
+    A[Acme Pipeline] --> B{Where to deploy?}
     B --> C[Single Server]
     B --> D[Docker / Compose]
     B --> E[Kubernetes]
-    B --> F[DataFlow Cloud]
+    B --> F[Acme Cloud]
 
     style A fill:#818cf8,stroke:#4f46e5,color:#fff
     style F fill:#34d399,stroke:#059669,color:#fff
@@ -22,14 +22,14 @@ graph TD
 
 ## Option 1: Single server
 
-The simplest deployment — install DataFlow on a server and run pipelines with the scheduler.
+The simplest deployment — install Acme on a server and run pipelines with the scheduler.
 
 ```bash
 # Install on your server
-pip install dataflow-cli
+pip install acme-cli
 
 # Start the scheduler daemon
-dataflow scheduler start --daemon
+acme scheduler start --daemon
 ```
 
 > [!warning] Single point of failure
@@ -44,16 +44,16 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install DataFlow
-RUN pip install dataflow-cli==2.4.0
+# Install Acme
+RUN pip install acme-cli==2.4.0
 
 # Copy pipeline definitions
-COPY dataflow.yml .
+COPY acme.yml .
 COPY pipelines/ ./pipelines/
 COPY transforms/ ./transforms/
 
 # Start the scheduler
-CMD ["dataflow", "scheduler", "start"]
+CMD ["acme", "scheduler", "start"]
 ```
 
 ### Docker Compose
@@ -63,23 +63,23 @@ CMD ["dataflow", "scheduler", "start"]
 version: "3.8"
 
 services:
-  dataflow:
+  acme:
     build: .
     env_file: .env
     volumes:
       - ./pipelines:/app/pipelines
-      - dataflow-state:/app/.dataflow
+      - acme-state:/app/.acme
     restart: unless-stopped
 
-  dataflow-api:
+  acme-api:
     build: .
-    command: dataflow api start --port 8080
+    command: acme api start --port 8080
     ports:
       - "8080:8080"
     env_file: .env
 
 volumes:
-  dataflow-state:
+  acme-state:
 ```
 
 ```bash
@@ -95,31 +95,31 @@ docker-compose up -d
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dataflow-scheduler
+  name: acme-scheduler
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dataflow
+      app: acme
   template:
     metadata:
       labels:
-        app: dataflow
+        app: acme
     spec:
       containers:
-        - name: dataflow
-          image: dataflow/dataflow:2.4.0
-          command: ["dataflow", "scheduler", "start"]
+        - name: acme
+          image: acme/acme:2.4.0
+          command: ["acme", "scheduler", "start"]
           envFrom:
             - secretRef:
-                name: dataflow-secrets
+                name: acme-secrets
           volumeMounts:
             - name: pipelines
               mountPath: /app/pipelines
       volumes:
         - name: pipelines
           configMap:
-            name: dataflow-pipelines
+            name: acme-pipelines
 ```
 
 > [!tip] GitOps workflow
@@ -145,17 +145,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install dataflow-cli
-      - run: dataflow test tests/
+      - run: pip install acme-cli
+      - run: acme test tests/
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t dataflow:${{ github.sha }} .
-      - run: docker push myregistry/dataflow:${{ github.sha }}
-      - run: kubectl set image deployment/dataflow dataflow=myregistry/dataflow:${{ github.sha }}
+      - run: docker build -t acme:${{ github.sha }} .
+      - run: docker push myregistry/acme:${{ github.sha }}
+      - run: kubectl set image deployment/acme acme=myregistry/acme:${{ github.sha }}
 ```
 
 ## Environment configuration
@@ -164,13 +164,13 @@ Use environment-specific configuration files:
 
 ```bash
 # Development
-dataflow run --env development
+acme run --env development
 
 # Staging
-dataflow run --env staging
+acme run --env staging
 
 # Production
-dataflow run --env production
+acme run --env production
 ```
 
 Each environment loads from `.env.{environment}`. See [[configuration/environment-variables|Environment Variables]] for details.

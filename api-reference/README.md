@@ -4,12 +4,12 @@ title: API Reference
 
 # API Reference
 
-DataFlow provides a RESTful API for managing pipelines, triggering runs, and monitoring status programmatically.
+Acme provides a RESTful API for managing pipelines, triggering runs, and monitoring status programmatically.
 
 ## Base URL
 
 ```
-https://your-dataflow-instance.com/api/v1
+https://your-acme-instance.com/api/v1
 ```
 
 ## Authentication
@@ -18,19 +18,19 @@ All API requests require authentication. See [[guides/authentication|Authenticat
 
 ```bash
 curl -H "Authorization: Bearer df_key_abc123..." \
-  https://dataflow.example.com/api/v1/pipelines
+  https://acme.example.com/api/v1/pipelines
 ```
 
 ## API modules
 
-| Module | Description | Reference |
-|--------|-------------|-----------|
-| **Client** | SDK initialization and configuration | [[api-reference/client\|Client]] |
-| **Pipeline** | Create, update, run, and manage pipelines | [[api-reference/pipeline\|Pipeline]] |
-| **Connector** | Manage source and destination connectors | [[api-reference/connector\|Connector]] |
-| **Transform** | Register and manage transform functions | [[api-reference/transform\|Transform]] |
-| **Scheduler** | Schedule and trigger pipeline runs | [[api-reference/scheduler\|Scheduler]] |
-| **Events** | Subscribe to pipeline lifecycle events | [[api-reference/events\|Events]] |
+| Module        | Description                               | Reference                              |
+| ------------- | ----------------------------------------- | -------------------------------------- |
+| **Client**    | SDK initialization and configuration      | [[api-reference/client\|Client]]       |
+| **Pipeline**  | Create, update, run, and manage pipelines | [[api-reference/pipeline\|Pipeline]]   |
+| **Connector** | Manage source and destination connectors  | [[api-reference/connector\|Connector]] |
+| **Transform** | Register and manage transform functions   | [[api-reference/transform\|Transform]] |
+| **Scheduler** | Schedule and trigger pipeline runs        | [[api-reference/scheduler\|Scheduler]] |
+| **Events**    | Subscribe to pipeline lifecycle events    | [[api-reference/events\|Events]]       |
 
 ## Response format
 
@@ -66,14 +66,15 @@ All API responses follow a consistent format:
 
 ## Rate limits
 
-| Plan | Requests/min | Burst |
-|------|-------------|-------|
-| Free | 60 | 10 |
-| Pro | 600 | 100 |
-| Enterprise | Unlimited | Unlimited |
+| Plan       | Requests/min | Burst     |
+| ---------- | ------------ | --------- |
+| Free       | 60           | 10        |
+| Pro        | 600          | 100       |
+| Enterprise | Unlimited    | Unlimited |
 
 > [!info] Rate limit headers
 > Every response includes rate limit headers:
+>
 > ```
 > X-RateLimit-Limit: 600
 > X-RateLimit-Remaining: 594
@@ -86,13 +87,13 @@ Official client libraries:
 
 ```bash
 # Python
-pip install dataflow-sdk
+pip install acme-sdk
 
 # JavaScript/TypeScript
-npm install @dataflow/sdk
+npm install @acme/sdk
 
 # Go
-go get github.com/dataflow/dataflow-go
+go get github.com/acme/acme-go
 ```
 
 See [[api-reference/client|Client]] for SDK usage examples.

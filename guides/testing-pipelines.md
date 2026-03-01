@@ -4,7 +4,7 @@ title: Testing Pipelines
 
 # Testing Pipelines
 
-Every DataFlow pipeline can be tested locally before deployment. The `dataflow test` command validates your configuration, checks connections, and runs your pipeline against fixture data.
+Every Acme pipeline can be tested locally before deployment. The `acme test` command validates your configuration, checks connections, and runs your pipeline against fixture data.
 
 ## Why test?
 
@@ -12,6 +12,7 @@ Every DataFlow pipeline can be tested locally before deployment. The `dataflow t
 > "If it's not tested, it's broken." — Every data engineer, eventually.
 
 Testing prevents:
+
 - Schema mismatches that silently drop columns
 - Transform logic errors that corrupt data
 - Connection failures that only surface in production
@@ -23,7 +24,7 @@ Testing prevents:
 Check that your YAML is valid and all referenced transforms exist:
 
 ```bash
-dataflow test --validate pipelines/user-analytics.yml
+acme test --validate pipelines/user-analytics.yml
 ```
 
 ```
@@ -48,7 +49,8 @@ fixtures:
 
 assertions:
   - row_count: { min: 1, max: 100 }
-  - columns: [id, full_name, email_hash, account_age_days, is_recent, created_at]
+  - columns:
+      [id, full_name, email_hash, account_age_days, is_recent, created_at]
   - no_nulls: [id, full_name, email_hash]
   - unique: [id]
 ```
@@ -65,7 +67,7 @@ id,email,first_name,last_name,status,created_at,last_login_at
 Run the test:
 
 ```bash
-dataflow test tests/test_user_analytics.yml
+acme test tests/test_user_analytics.yml
 ```
 
 ```
@@ -92,18 +94,19 @@ Compare pipeline output against a known-good snapshot:
 
 ```bash
 # Generate a snapshot
-dataflow test tests/test_user_analytics.yml --update-snapshot
+acme test tests/test_user_analytics.yml --update-snapshot
 
 # Run against the snapshot
-dataflow test tests/test_user_analytics.yml --snapshot
+acme test tests/test_user_analytics.yml --snapshot
 ```
 
 > [!tip] CI integration
-> Add `dataflow test` to your CI pipeline to catch regressions before they reach production:
+> Add `acme test` to your CI pipeline to catch regressions before they reach production:
+>
 > ```yaml
 > # .github/workflows/test.yml
 > - name: Test pipelines
->   run: dataflow test tests/
+>   run: acme test tests/
 > ```
 
 ## Writing good tests

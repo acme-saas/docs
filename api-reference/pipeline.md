@@ -16,11 +16,11 @@ GET /api/v1/pipelines
 
 **Parameters:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `status` | string | Filter by status: `active`, `paused`, `error` |
-| `page` | integer | Page number (default: 1) |
-| `per_page` | integer | Results per page (default: 20, max: 100) |
+| Parameter  | Type    | Description                                   |
+| ---------- | ------- | --------------------------------------------- |
+| `status`   | string  | Filter by status: `active`, `paused`, `error` |
+| `page`     | integer | Page number (default: 1)                      |
+| `per_page` | integer | Results per page (default: 20, max: 100)      |
 
 **Response:**
 
@@ -100,11 +100,11 @@ POST /api/v1/pipelines/:name/runs
 
 **Parameters:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter      | Type    | Description                                   |
+| -------------- | ------- | --------------------------------------------- |
 | `full_refresh` | boolean | Ignore incremental state and process all data |
-| `dry_run` | boolean | Validate without executing |
-| `variables` | object | Override environment variables for this run |
+| `dry_run`      | boolean | Validate without executing                    |
+| `variables`    | object  | Override environment variables for this run   |
 
 **Example:**
 
@@ -113,7 +113,7 @@ curl -X POST \
   -H "Authorization: Bearer df_key_..." \
   -H "Content-Type: application/json" \
   -d '{"full_refresh": false}' \
-  https://dataflow.example.com/api/v1/pipelines/user-analytics/runs
+  https://acme.example.com/api/v1/pipelines/user-analytics/runs
 ```
 
 **Response:**

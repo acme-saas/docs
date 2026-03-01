@@ -4,7 +4,7 @@ title: Changelog
 
 # Changelog
 
-All notable changes to DataFlow are documented here.
+All notable changes to Acme are documented here.
 
 ## v2.4.0 — 2026-02-15
 
@@ -12,7 +12,7 @@ All notable changes to DataFlow are documented here.
 
 - **Real-time CDC support** for PostgreSQL sources. See [[guides/real-time-streaming|Real-time Streaming Guide]].
 - New `webhook` destination type for pushing events to HTTP endpoints.
-- Pipeline-level environment variable overrides in `dataflow.yml`.
+- Pipeline-level environment variable overrides in `acme.yml`.
 
 ### Changed
 
@@ -25,7 +25,7 @@ All notable changes to DataFlow are documented here.
 - Resolved memory leak in long-running streaming pipelines (>48h).
 
 > [!note]
-> This release requires a database migration. Run `dataflow migrate up` before starting the server.
+> This release requires a database migration. Run `acme migrate up` before starting the server.
 
 ---
 
@@ -35,7 +35,7 @@ All notable changes to DataFlow are documented here.
 
 - [[guides/authentication|OAuth 2.0 authentication]] for API access.
 - Support for Parquet file sources.
-- `dataflow test` command for [[guides/testing-pipelines|pipeline validation]].
+- `acme test` command for [[guides/testing-pipelines|pipeline validation]].
 
 ### Changed
 

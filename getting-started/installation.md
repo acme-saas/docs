@@ -4,47 +4,47 @@ title: Installation
 
 # Installation
 
-DataFlow can be installed via pip, Homebrew, or Docker.
+Acme can be installed via pip, Homebrew, or Docker.
 
 ## Using pip (recommended)
 
 ```bash
-pip install dataflow-cli
+pip install acme-cli
 ```
 
 Verify the installation:
 
 ```bash
-dataflow --version
-# DataFlow CLI v2.4.0
+acme --version
+# Acme CLI v2.4.0
 ```
 
 ## Using Homebrew (macOS)
 
 ```bash
-brew tap dataflow/tap
-brew install dataflow
+brew tap acme/tap
+brew install acme
 ```
 
 ## Using Docker
 
 ```bash
-docker pull dataflow/dataflow:latest
-docker run --rm dataflow/dataflow:latest --version
+docker pull acme/acme:latest
+docker run --rm acme/acme:latest --version
 ```
 
 > [!warning] Python version
-> DataFlow requires **Python 3.10 or higher**. If you're using an older version, consider using [pyenv](https://github.com/pyenv/pyenv) to manage multiple Python versions.
+> Acme requires **Python 3.10 or higher**. If you're using an older version, consider using [pyenv](https://github.com/pyenv/pyenv) to manage multiple Python versions.
 
 ## Post-installation setup
 
 After installing, initialize your configuration:
 
 ```bash
-dataflow init
+acme init
 ```
 
-This creates a `~/.dataflow/config.yml` file with default settings. See [[configuration/config-file|Configuration]] for all available options.
+This creates a `~/.acme/config.yml` file with default settings. See [[configuration/config-file|Configuration]] for all available options.
 
 ## Shell completions
 
@@ -52,23 +52,23 @@ Enable tab completions for your shell:
 
 ```bash
 # Bash
-dataflow completions bash >> ~/.bashrc
+acme completions bash >> ~/.bashrc
 
 # Zsh
-dataflow completions zsh >> ~/.zshrc
+acme completions zsh >> ~/.zshrc
 
 # Fish
-dataflow completions fish > ~/.config/fish/completions/dataflow.fish
+acme completions fish > ~/.config/fish/completions/acme.fish
 ```
 
 ## Upgrading
 
 ```bash
-pip install --upgrade dataflow-cli
+pip install --upgrade acme-cli
 ```
 
 > [!note]
-> After upgrading, run `dataflow migrate up` to apply any database schema changes. See the [[changelog|Changelog]] for breaking changes.
+> After upgrading, run `acme migrate up` to apply any database schema changes. See the [[changelog|Changelog]] for breaking changes.
 
 ## Next steps
 

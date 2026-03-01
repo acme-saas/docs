@@ -1,8 +1,8 @@
 ---
-title: Contributing to DataFlow
+title: Contributing to Acme
 ---
 
-# Contributing to DataFlow
+# Contributing to Acme
 
 We welcome contributions of all kinds — bug fixes, new connectors, documentation improvements, and feature ideas.
 
@@ -13,8 +13,8 @@ We welcome contributions of all kinds — bug fixes, new connectors, documentati
 3. Install dependencies:
 
 ```bash
-git clone https://github.com/your-username/dataflow.git
-cd dataflow
+git clone https://github.com/your-username/acme.git
+cd acme
 make install
 ```
 
@@ -27,7 +27,7 @@ git checkout -b feature/my-new-connector
 ## Development setup
 
 > [!important]
-> DataFlow requires Python 3.10+ and Node.js 18+ for development.
+> Acme requires Python 3.10+ and Node.js 18+ for development.
 
 ```bash
 # Install development dependencies
@@ -43,7 +43,7 @@ make dev
 ## Project structure
 
 ```
-dataflow/
+acme/
 ├── src/
 │   ├── connectors/     # Source and destination connectors
 │   ├── transforms/     # Built-in transform functions

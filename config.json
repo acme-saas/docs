@@ -1,9 +1,9 @@
 {
   "logo": "⚗️",
-  "title": "Acme Documentation",
+  "title": "Acme Docs",
   "showSidebar": true,
   "nav": {
-    "title": "Acme Documentation",
+    "title": "Acme Docs",
     "links": [
       {
         "href": "#",

@@ -4,25 +4,25 @@ title: Quickstart
 
 # Quickstart
 
-Build and run your first DataFlow pipeline in under 5 minutes.
+Build and run your first Acme pipeline in under 5 minutes.
 
 ## Prerequisites
 
-- DataFlow CLI installed ([[getting-started/installation|Installation Guide]])
+- Acme CLI installed ([[getting-started/installation|Installation Guide]])
 - A running PostgreSQL database (or use our demo database)
 
 ## Step 1: Create a new project
 
 ```bash
 mkdir my-first-pipeline && cd my-first-pipeline
-dataflow init
+acme init
 ```
 
 This creates the following structure:
 
 ```
 my-first-pipeline/
-├── dataflow.yml        # Pipeline configuration
+├── acme.yml        # Pipeline configuration
 ├── .env                # Environment variables
 └── transforms/         # Custom transform functions
     └── .gitkeep
@@ -30,7 +30,7 @@ my-first-pipeline/
 
 ## Step 2: Define your pipeline
 
-Edit `dataflow.yml`:
+Edit `acme.yml`:
 
 ```yaml
 name: hello-world
@@ -71,7 +71,7 @@ Eva Martinez,eva@example.com,45,MX
 ## Step 4: Run the pipeline
 
 ```bash
-dataflow run
+acme run
 ```
 
 You should see output like:
@@ -87,7 +87,7 @@ Pipeline completed in 0.3s
 ```
 
 > [!success] Congratulations!
-> You've just built and run your first DataFlow pipeline. The filtered data is in `./output/filtered_users.json`.
+> You've just built and run your first Acme pipeline. The filtered data is in `./output/filtered_users.json`.
 
 ## Step 5: Check the output
 
@@ -116,6 +116,6 @@ Pipeline completed in 0.3s
 
 ## What's next?
 
-- [[getting-started/project-structure|Project Structure]] — understand the files in a DataFlow project
+- [[getting-started/project-structure|Project Structure]] — understand the files in a Acme project
 - [[getting-started/first-pipeline|Your First Pipeline]] — a more detailed walkthrough with a real database
 - [[concepts/pipelines|Pipelines]] — learn how pipelines work under the hood

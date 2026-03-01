@@ -4,19 +4,20 @@ title: Monitoring
 
 # Monitoring
 
-Once your pipelines are running in production, you need visibility into their health. DataFlow provides built-in metrics, logging, and integrations with popular monitoring tools.
+Once your pipelines are running in production, you need visibility into their health. Acme provides built-in metrics, logging, and integrations with popular monitoring tools.
 
 ## Dashboard
 
-DataFlow includes a web dashboard for monitoring pipeline status:
+Acme includes a web dashboard for monitoring pipeline status:
 
 ```bash
-dataflow dashboard --port 3000
+acme dashboard --port 3000
 ```
 
-![DataFlow Monitoring Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=500&fit=crop)
+![Acme Monitoring Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=500&fit=crop)
 
 The dashboard shows:
+
 - Pipeline run history and status
 - Row counts per pipeline
 - Error rates and latency
@@ -24,50 +25,51 @@ The dashboard shows:
 
 ## Metrics
 
-DataFlow exposes Prometheus-compatible metrics at `/metrics`:
+Acme exposes Prometheus-compatible metrics at `/metrics`:
 
 ```
 # Pipeline run duration
-dataflow_pipeline_duration_seconds{pipeline="user-analytics",status="success"} 4.7
+acme_pipeline_duration_seconds{pipeline="user-analytics",status="success"} 4.7
 
 # Rows processed
-dataflow_rows_processed_total{pipeline="user-analytics",stage="extract"} 1247
-dataflow_rows_processed_total{pipeline="user-analytics",stage="load"} 892
+acme_rows_processed_total{pipeline="user-analytics",stage="extract"} 1247
+acme_rows_processed_total{pipeline="user-analytics",stage="load"} 892
 
 # Active pipelines
-dataflow_active_pipelines 3
+acme_active_pipelines 3
 
 # Error count
-dataflow_errors_total{pipeline="user-analytics",type="transform"} 0
+acme_errors_total{pipeline="user-analytics",type="transform"} 0
 ```
 
 ### Grafana integration
 
-Import the DataFlow Grafana dashboard:
+Import the Acme Grafana dashboard:
 
 ```bash
-dataflow monitoring export-grafana > grafana-dashboard.json
+acme monitoring export-grafana > grafana-dashboard.json
 ```
 
 > [!example] Sample Grafana queries
+>
 > ```promql
 > # Pipeline success rate (last 24h)
-> rate(dataflow_pipeline_runs_total{status="success"}[24h])
+> rate(acme_pipeline_runs_total{status="success"}[24h])
 > /
-> rate(dataflow_pipeline_runs_total[24h])
+> rate(acme_pipeline_runs_total[24h])
 >
 > # Average pipeline duration
-> histogram_quantile(0.95, dataflow_pipeline_duration_seconds_bucket)
+> histogram_quantile(0.95, acme_pipeline_duration_seconds_bucket)
 >
 > # Error rate per pipeline
-> rate(dataflow_errors_total[1h])
+> rate(acme_errors_total[1h])
 > ```
 
 ## Alerting
 
 ### Built-in alerts
 
-Configure alerts in `dataflow.yml`:
+Configure alerts in `acme.yml`:
 
 ```yaml
 monitoring:
@@ -108,7 +110,7 @@ monitoring:
 
 ## Logging
 
-DataFlow outputs structured JSON logs by default:
+Acme outputs structured JSON logs by default:
 
 ```json
 {
@@ -124,18 +126,18 @@ DataFlow outputs structured JSON logs by default:
 
 ### Log levels
 
-| Level | Description |
-|-------|-------------|
-| `debug` | Detailed processing info (per-row logging) |
-| `info` | Pipeline lifecycle events |
-| `warning` | Non-fatal issues (retries, slow queries) |
-| `error` | Failed operations |
-| `critical` | System-level failures |
+| Level      | Description                                |
+| ---------- | ------------------------------------------ |
+| `debug`    | Detailed processing info (per-row logging) |
+| `info`     | Pipeline lifecycle events                  |
+| `warning`  | Non-fatal issues (retries, slow queries)   |
+| `error`    | Failed operations                          |
+| `critical` | System-level failures                      |
 
 Configure log level:
 
 ```bash
-dataflow run --log-level debug
+acme run --log-level debug
 ```
 
 Or in configuration:
@@ -143,13 +145,13 @@ Or in configuration:
 ```yaml
 logging:
   level: info
-  format: json  # json | text
-  output: stdout  # stdout | file
-  file: /var/log/dataflow/pipeline.log
+  format: json # json | text
+  output: stdout # stdout | file
+  file: /var/log/acme/pipeline.log
 ```
 
 > [!tip] Log aggregation
-> Ship DataFlow logs to your existing log aggregation system (ELK, Datadog, CloudWatch) for centralized monitoring. The JSON format is designed for easy parsing.
+> Ship Acme logs to your existing log aggregation system (ELK, Datadog, CloudWatch) for centralized monitoring. The JSON format is designed for easy parsing.
 
 ## Related
 

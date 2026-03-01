@@ -63,8 +63,8 @@ sources:
     name: users_cdc
     connection: ${DATABASE_URL}
     mode: cdc
-    publication: dataflow_pub
-    slot: dataflow_slot
+    publication: acme_pub
+    slot: acme_slot
     tables:
       - public.users
       - public.orders
@@ -95,7 +95,7 @@ sources:
 ```
 
 > [!warning] MySQL 5.7 vs 8.0
-> DataFlow supports both MySQL 5.7 and 8.0, but some features (like window functions in queries) require MySQL 8.0.
+> Acme supports both MySQL 5.7 and 8.0, but some features (like window functions in queries) require MySQL 8.0.
 
 ## MongoDB
 
@@ -133,7 +133,7 @@ sources:
 Verify your connection before running a pipeline:
 
 ```bash
-dataflow test-connection --type postgres --connection "${DATABASE_URL}"
+acme test-connection --type postgres --connection "${DATABASE_URL}"
 ```
 
 ```

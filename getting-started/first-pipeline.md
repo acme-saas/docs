@@ -7,7 +7,8 @@ title: Your First Pipeline
 This guide walks you through building a real-world pipeline that reads from a PostgreSQL database, transforms the data, and loads it into a data warehouse.
 
 > [!info] Prerequisites
-> - DataFlow CLI installed ([[getting-started/installation|Installation]])
+>
+> - Acme CLI installed ([[getting-started/installation|Installation]])
 > - A PostgreSQL database with sample data
 > - A BigQuery project (or use the local JSON destination for testing)
 
@@ -25,7 +26,7 @@ You have a `users` table in PostgreSQL and need to:
 ```yaml
 # pipelines/user-analytics.yml
 name: user-analytics
-schedule: "0 */6 * * *"  # Every 6 hours
+schedule: "0 */6 * * *" # Every 6 hours
 
 sources:
   - type: postgres
@@ -94,7 +95,7 @@ def hash_email(row):
 ```mermaid
 sequenceDiagram
     participant PG as PostgreSQL
-    participant DF as DataFlow Engine
+    participant DF as Acme Engine
     participant BQ as BigQuery
 
     PG->>DF: Extract active users (incremental)
@@ -111,13 +112,13 @@ sequenceDiagram
 
 ```bash
 # Dry run — validate without executing
-dataflow run pipelines/user-analytics.yml --dry-run
+acme run pipelines/user-analytics.yml --dry-run
 
 # Run once
-dataflow run pipelines/user-analytics.yml
+acme run pipelines/user-analytics.yml
 
 # Run with verbose logging
-dataflow run pipelines/user-analytics.yml --verbose
+acme run pipelines/user-analytics.yml --verbose
 ```
 
 Expected output:
@@ -139,12 +140,12 @@ Pipeline completed in 4.7s
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
-| `ConnectionRefused` | Check that your database is running and `DATABASE_URL` is correct |
-| `PermissionDenied` on BigQuery | Ensure your service account has `bigquery.dataEditor` role |
-| Slow initial run | Add an index on `updated_at` in your source table |
-| Transform errors | Run with `--verbose` to see the failing row |
+| Problem                        | Solution                                                          |
+| ------------------------------ | ----------------------------------------------------------------- |
+| `ConnectionRefused`            | Check that your database is running and `DATABASE_URL` is correct |
+| `PermissionDenied` on BigQuery | Ensure your service account has `bigquery.dataEditor` role        |
+| Slow initial run               | Add an index on `updated_at` in your source table                 |
+| Transform errors               | Run with `--verbose` to see the failing row                       |
 
 ## Next steps
 

@@ -4,7 +4,7 @@ title: Events API
 
 # Events API
 
-DataFlow emits events at every stage of pipeline execution. Use the Events API to subscribe to events, build custom dashboards, or integrate with external monitoring systems.
+Acme emits events at every stage of pipeline execution. Use the Events API to subscribe to events, build custom dashboards, or integrate with external monitoring systems.
 
 ## Event types
 
@@ -24,17 +24,17 @@ graph LR
     style G fill:#f87171,stroke:#dc2626,color:#fff
 ```
 
-| Event | Fired when |
-|-------|-----------|
-| `pipeline.started` | A pipeline run begins |
-| `pipeline.stage.extract` | Extraction completes |
-| `pipeline.stage.transform` | All transforms complete |
-| `pipeline.stage.load` | Loading completes |
-| `pipeline.completed` | Run finishes successfully |
-| `pipeline.failed` | Run fails with an error |
-| `pipeline.retrying` | A failed step is being retried |
+| Event                      | Fired when                      |
+| -------------------------- | ------------------------------- |
+| `pipeline.started`         | A pipeline run begins           |
+| `pipeline.stage.extract`   | Extraction completes            |
+| `pipeline.stage.transform` | All transforms complete         |
+| `pipeline.stage.load`      | Loading completes               |
+| `pipeline.completed`       | Run finishes successfully       |
+| `pipeline.failed`          | Run fails with an error         |
+| `pipeline.retrying`        | A failed step is being retried  |
 | `connector.health.changed` | Connector health status changes |
-| `scheduler.triggered` | Scheduler triggers a pipeline |
+| `scheduler.triggered`      | Scheduler triggers a pipeline   |
 
 ## Event payload
 
@@ -53,10 +53,10 @@ Every event has a consistent structure:
     "rows_extracted": 1247,
     "rows_loaded": 892,
     "stages": [
-      {"name": "extract", "duration_ms": 1200, "rows": 1247},
-      {"name": "filter", "duration_ms": 300, "rows": 892},
-      {"name": "transform", "duration_ms": 1800, "rows": 892},
-      {"name": "load", "duration_ms": 1400, "rows": 892}
+      { "name": "extract", "duration_ms": 1200, "rows": 1247 },
+      { "name": "filter", "duration_ms": 300, "rows": 892 },
+      { "name": "transform", "duration_ms": 1800, "rows": 892 },
+      { "name": "load", "duration_ms": 1400, "rows": 892 }
     ]
   }
 }
@@ -69,16 +69,16 @@ Every event has a consistent structure:
 Receive events via HTTP POST:
 
 ```yaml
-# dataflow.yml
+# acme.yml
 events:
   webhooks:
-    - url: https://your-app.com/webhooks/dataflow
+    - url: https://your-app.com/webhooks/acme
       events: ["pipeline.completed", "pipeline.failed"]
       secret: ${WEBHOOK_SECRET}
       retry: true
 ```
 
-DataFlow signs webhook payloads with HMAC-SHA256:
+Acme signs webhook payloads with HMAC-SHA256:
 
 ```python
 import hmac
@@ -99,7 +99,7 @@ Stream events in real-time:
 
 ```bash
 curl -N -H "Authorization: Bearer df_key_..." \
-  "https://dataflow.example.com/api/v1/events/stream?pipeline=user-analytics"
+  "https://acme.example.com/api/v1/events/stream?pipeline=user-analytics"
 ```
 
 ```

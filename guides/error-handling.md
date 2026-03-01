@@ -4,11 +4,11 @@ title: Error Handling
 
 # Error Handling
 
-Things break. Databases go down, APIs return errors, and data doesn't always match your expectations. This guide covers how DataFlow handles failures and how to configure resilient pipelines.
+Things break. Databases go down, APIs return errors, and data doesn't always match your expectations. This guide covers how Acme handles failures and how to configure resilient pipelines.
 
 ## Error strategies
 
-DataFlow supports three error strategies:
+Acme supports three error strategies:
 
 ```mermaid
 graph TD
@@ -43,7 +43,7 @@ error_handling:
   strategy: retry
   max_retries: 3
   retry_delay: 10s
-  backoff: exponential  # linear | exponential | constant
+  backoff: exponential # linear | exponential | constant
 ```
 
 > [!info] Exponential backoff
@@ -56,7 +56,7 @@ Skip the failing row and continue processing. Failed rows are logged and optiona
 ```yaml
 error_handling:
   strategy: skip
-  max_errors: 100       # stop after 100 errors in a single run
+  max_errors: 100 # stop after 100 errors in a single run
   dead_letter:
     type: json
     path: ./errors/${pipeline_name}_${run_id}.json
@@ -93,6 +93,7 @@ Each failed row is stored with metadata:
 
 > [!tip] Reprocessing failed rows
 > You can use a dead-letter JSON file as a source for a recovery pipeline:
+>
 > ```yaml
 > sources:
 >   - type: json
@@ -121,13 +122,13 @@ notifications:
 
 ## Common errors and solutions
 
-| Error | Cause | Solution |
-|-------|-------|----------|
-| `ConnectionRefused` | Database is down or unreachable | Check host/port, firewall rules, SSL config |
-| `AuthenticationFailed` | Invalid credentials | Verify `${DATABASE_URL}`, check user permissions |
+| Error                   | Cause                             | Solution                                            |
+| ----------------------- | --------------------------------- | --------------------------------------------------- |
+| `ConnectionRefused`     | Database is down or unreachable   | Check host/port, firewall rules, SSL config         |
+| `AuthenticationFailed`  | Invalid credentials               | Verify `${DATABASE_URL}`, check user permissions    |
 | `SchemaValidationError` | Row doesn't match expected schema | Check source data, add a `filter` before validation |
-| `RateLimitExceeded` | API destination is throttling | Reduce `batch_size`, add `retry` with backoff |
-| `OutOfMemory` | Batch too large for available RAM | Reduce `batch_size` or `workers` |
+| `RateLimitExceeded`     | API destination is throttling     | Reduce `batch_size`, add `retry` with backoff       |
+| `OutOfMemory`           | Batch too large for available RAM | Reduce `batch_size` or `workers`                    |
 
 > [!warning]
 > The `skip` strategy can silently drop data if misconfigured. Always set a `max_errors` limit and monitor your dead-letter queue.

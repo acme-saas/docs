@@ -4,17 +4,17 @@ title: Pipelines
 
 # Pipelines
 
-A pipeline is the core unit of work in DataFlow. It defines where data comes from, how it's transformed, and where it goes.
+A pipeline is the core unit of work in Acme. It defines where data comes from, how it's transformed, and where it goes.
 
 ## Pipeline lifecycle
 
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
-    Pending --> Running: dataflow run
+    Pending --> Running: acme run
     Running --> Success: all rows processed
     Running --> Failed: unhandled error
-    Failed --> Running: dataflow run --retry
+    Failed --> Running: acme run --retry
     Success --> [*]
     Failed --> [*]
 ```
@@ -87,10 +87,10 @@ graph TD
     C --> D[export-report]
 ```
 
-DataFlow ensures that `aggregate-revenue` only runs after both dependencies have completed successfully.
+Acme ensures that `aggregate-revenue` only runs after both dependencies have completed successfully.
 
 > [!warning] Circular dependencies
-> DataFlow will detect and reject circular dependencies at validation time. If you see a `CircularDependencyError`, check your `depends_on` fields.
+> Acme will detect and reject circular dependencies at validation time. If you see a `CircularDependencyError`, check your `depends_on` fields.
 
 ## Error handling
 
@@ -98,7 +98,7 @@ By default, a pipeline fails on the first error. You can configure retry behavio
 
 ```yaml
 error_handling:
-  strategy: retry      # retry | skip | fail
+  strategy: retry # retry | skip | fail
   max_retries: 3
   retry_delay: 30s
   dead_letter:

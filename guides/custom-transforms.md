@@ -4,7 +4,7 @@ title: Writing Custom Transforms
 
 # Writing Custom Transforms
 
-When built-in transforms aren't enough, DataFlow lets you write custom data transformations in Python. This guide covers everything from simple row transforms to batch operations and async processing.
+When built-in transforms aren't enough, Acme lets you write custom data transformations in Python. This guide covers everything from simple row transforms to batch operations and async processing.
 
 ## Basic row transform
 
@@ -41,7 +41,7 @@ For operations that need access to multiple rows (like aggregation or lookups), 
 
 ```python
 # transforms/dedupe.py
-from dataflow.sdk import BatchTransform
+from acme.sdk import BatchTransform
 
 class DeduplicateByEmail(BatchTransform):
     """Remove duplicate rows, keeping the most recent."""
@@ -65,6 +65,7 @@ transforms:
 
 > [!warning] Rate limiting
 > External API calls can significantly slow down your pipeline. Consider:
+>
 > - Caching responses locally
 > - Using batch API endpoints when available
 > - Setting appropriate timeouts
@@ -110,7 +111,7 @@ Some transforms need to maintain state across rows — for example, computing ru
 
 ```python
 # transforms/running_total.py
-from dataflow.sdk import StatefulTransform
+from acme.sdk import StatefulTransform
 
 class RunningTotal(StatefulTransform):
     def setup(self, config):
@@ -167,7 +168,7 @@ pytest tests/test_transforms.py -v
 
 1. **Avoid per-row API calls** — use batch endpoints or caching
 2. **Use generators** for memory efficiency with large datasets
-3. **Profile your transforms** with `dataflow run --profile`
+3. **Profile your transforms** with `acme run --profile`
 4. **Keep it simple** — complex transforms are harder to debug
 
 ## Related

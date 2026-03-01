@@ -4,13 +4,13 @@ title: Project Structure
 
 # Project Structure
 
-A DataFlow project is a directory containing configuration files, transform definitions, and optional test fixtures.
+A Acme project is a directory containing configuration files, transform definitions, and optional test fixtures.
 
 ## Default layout
 
 ```
 my-project/
-├── dataflow.yml           # Main pipeline configuration
+├── acme.yml           # Main pipeline configuration
 ├── pipelines/             # Additional pipeline definitions
 │   ├── users.yml
 │   ├── orders.yml
@@ -25,14 +25,14 @@ my-project/
 │       └── sample_users.csv
 ├── .env                   # Environment variables (not committed)
 ├── .env.example           # Example environment file
-└── .dataflow/             # Local state (auto-generated)
+└── .acme/             # Local state (auto-generated)
     ├── runs/              # Pipeline run history
     └── cache/             # Connector cache
 ```
 
 ## Key files
 
-### `dataflow.yml`
+### `acme.yml`
 
 The main configuration file. Defines sources, transforms, destinations, and scheduling.
 
@@ -59,7 +59,7 @@ For projects with multiple pipelines, you can split them into separate files:
 
 ```mermaid
 graph TD
-    A[dataflow.yml] -->|defaults| B[pipelines/users.yml]
+    A[acme.yml] -->|defaults| B[pipelines/users.yml]
     A -->|defaults| C[pipelines/orders.yml]
     A -->|defaults| D[pipelines/analytics.yml]
 
@@ -68,7 +68,7 @@ graph TD
     D --> G[bigquery]
 ```
 
-Each pipeline file inherits the `defaults` from `dataflow.yml` but can override any setting.
+Each pipeline file inherits the `defaults` from `acme.yml` but can override any setting.
 
 ### `transforms/` directory
 

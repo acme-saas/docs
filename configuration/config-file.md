@@ -4,7 +4,7 @@ title: Configuration File Reference
 
 # Configuration File Reference
 
-The `dataflow.yml` file is the primary configuration file for a DataFlow project. This page documents every available setting.
+The `acme.yml` file is the primary configuration file for a Acme project. This page documents every available setting.
 
 ## Minimal configuration
 
@@ -25,30 +25,30 @@ destinations:
 
 ```yaml
 # ─── Project ─────────────────────────────────────────
-name: my-project                    # Required. Project name.
-version: "1.0"                      # Required. Configuration version.
-description: "My data pipeline"     # Optional. Human-readable description.
+name: my-project # Required. Project name.
+version: "1.0" # Required. Configuration version.
+description: "My data pipeline" # Optional. Human-readable description.
 
 # ─── Defaults ────────────────────────────────────────
 defaults:
-  batch_size: 5000                  # Rows per batch (default: 5000)
-  workers: 4                        # Parallel transform workers (default: 4)
-  timeout: 300                      # Pipeline timeout in seconds (default: 300)
-  retry_count: 3                    # Max retries on failure (default: 3)
-  retry_delay: 10                   # Seconds between retries (default: 10)
-  buffer_memory: 256mb              # Max memory for buffering (default: 256mb)
+  batch_size: 5000 # Rows per batch (default: 5000)
+  workers: 4 # Parallel transform workers (default: 4)
+  timeout: 300 # Pipeline timeout in seconds (default: 300)
+  retry_count: 3 # Max retries on failure (default: 3)
+  retry_delay: 10 # Seconds between retries (default: 10)
+  buffer_memory: 256mb # Max memory for buffering (default: 256mb)
 
 # ─── Sources ─────────────────────────────────────────
 sources:
-  - type: postgres                  # Connector type
-    name: main_db                   # Unique name for this source
-    connection: ${DATABASE_URL}     # Connection string (use env vars!)
-    query: "SELECT * FROM users"    # SQL query
-    timeout: 60                     # Query timeout in seconds
-    batch_size: 10000               # Override default batch size
+  - type: postgres # Connector type
+    name: main_db # Unique name for this source
+    connection: ${DATABASE_URL} # Connection string (use env vars!)
+    query: "SELECT * FROM users" # SQL query
+    timeout: 60 # Query timeout in seconds
+    batch_size: 10000 # Override default batch size
     incremental:
-      column: updated_at            # Column for incremental extraction
-      initial_value: "2025-01-01"   # Starting value for first run
+      column: updated_at # Column for incremental extraction
+      initial_value: "2025-01-01" # Starting value for first run
 
 # ─── Transforms ──────────────────────────────────────
 transforms:
@@ -67,24 +67,24 @@ destinations:
   - type: bigquery
     dataset: analytics
     table: users
-    write_mode: upsert              # append | replace | upsert | merge
-    key: id                         # Key column for upsert/merge
+    write_mode: upsert # append | replace | upsert | merge
+    key: id # Key column for upsert/merge
 
 # ─── Scheduling ──────────────────────────────────────
-schedule: "0 */6 * * *"            # Cron expression
-timezone: "UTC"                     # Timezone for schedule (default: UTC)
+schedule: "0 */6 * * *" # Cron expression
+timezone: "UTC" # Timezone for schedule (default: UTC)
 
 # ─── Dependencies ────────────────────────────────────
 depends_on:
-  - load-orders                     # Wait for these pipelines first
+  - load-orders # Wait for these pipelines first
   - load-exchange-rates
 
 # ─── Error Handling ──────────────────────────────────
 error_handling:
-  strategy: retry                   # fail | retry | skip
+  strategy: retry # fail | retry | skip
   max_retries: 3
   retry_delay: 10s
-  backoff: exponential              # linear | exponential | constant
+  backoff: exponential # linear | exponential | constant
   dead_letter:
     type: json
     path: ./errors/
@@ -109,7 +109,7 @@ notifications:
 monitoring:
   metrics:
     enabled: true
-    port: 9090                      # Prometheus metrics port
+    port: 9090 # Prometheus metrics port
   alerts:
     - name: high-latency
       condition: "duration_seconds > 300"
@@ -117,10 +117,10 @@ monitoring:
 
 # ─── Logging ─────────────────────────────────────────
 logging:
-  level: info                       # debug | info | warning | error
-  format: json                      # json | text
-  output: stdout                    # stdout | file
-  file: /var/log/dataflow.log       # Log file path (when output: file)
+  level: info # debug | info | warning | error
+  format: json # json | text
+  output: stdout # stdout | file
+  file: /var/log/acme.log # Log file path (when output: file)
 
 # ─── Plugins ─────────────────────────────────────────
 plugins:
@@ -132,23 +132,23 @@ plugins:
 
 # ─── Auth (API server) ──────────────────────────────
 auth:
-  provider: api_key                 # api_key | oauth2
+  provider: api_key # api_key | oauth2
   # For OAuth 2.0:
   # issuer: https://auth.example.com
   # client_id: ${OAUTH_CLIENT_ID}
 ```
 
 > [!warning] YAML indentation
-> YAML is sensitive to indentation. Use 2 spaces (not tabs). Most errors in `dataflow.yml` are caused by incorrect indentation.
+> YAML is sensitive to indentation. Use 2 spaces (not tabs). Most errors in `acme.yml` are caused by incorrect indentation.
 
 ## Validating your configuration
 
 ```bash
-dataflow validate
+acme validate
 ```
 
 ```
-✓ dataflow.yml is valid
+✓ acme.yml is valid
 ✓ All sources configured correctly
 ✓ All transforms found
 ✓ All destinations configured correctly

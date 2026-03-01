@@ -4,37 +4,37 @@ title: Connectors
 
 # Connectors
 
-Connectors are adapters that let DataFlow read from sources and write to destinations. Each connector handles the specifics of a particular system — authentication, data formats, pagination, etc.
+Connectors are adapters that let Acme read from sources and write to destinations. Each connector handles the specifics of a particular system — authentication, data formats, pagination, etc.
 
 ## Available connectors
 
 ### Sources
 
-| Connector | Type | Incremental | Streaming |
-|-----------|------|:-----------:|:---------:|
-| PostgreSQL | `postgres` | Yes | Yes (CDC) |
-| MySQL | `mysql` | Yes | No |
-| MongoDB | `mongodb` | Yes | Yes |
-| CSV | `csv` | No | No |
-| JSON | `json` | No | No |
-| Parquet | `parquet` | No | No |
-| REST API | `rest` | Configurable | No |
-| Kafka | `kafka` | N/A | Yes |
-| Redis Streams | `redis_stream` | N/A | Yes |
-| S3 | `s3` | Yes | No |
-| Google Sheets | `google_sheets` | No | No |
+| Connector     | Type            | Incremental  | Streaming |
+| ------------- | --------------- | :----------: | :-------: |
+| PostgreSQL    | `postgres`      |     Yes      | Yes (CDC) |
+| MySQL         | `mysql`         |     Yes      |    No     |
+| MongoDB       | `mongodb`       |     Yes      |    Yes    |
+| CSV           | `csv`           |      No      |    No     |
+| JSON          | `json`          |      No      |    No     |
+| Parquet       | `parquet`       |      No      |    No     |
+| REST API      | `rest`          | Configurable |    No     |
+| Kafka         | `kafka`         |     N/A      |    Yes    |
+| Redis Streams | `redis_stream`  |     N/A      |    Yes    |
+| S3            | `s3`            |     Yes      |    No     |
+| Google Sheets | `google_sheets` |      No      |    No     |
 
 ### Destinations
 
-| Connector | Type | Write modes |
-|-----------|------|-------------|
-| BigQuery | `bigquery` | append, replace, upsert, merge |
-| Snowflake | `snowflake` | append, replace, upsert |
-| PostgreSQL | `postgres` | append, replace, upsert |
-| S3 | `s3` | append, replace |
-| JSON | `json` | append, replace |
-| Webhook | `webhook` | append |
-| Elasticsearch | `elasticsearch` | append, upsert |
+| Connector     | Type            | Write modes                    |
+| ------------- | --------------- | ------------------------------ |
+| BigQuery      | `bigquery`      | append, replace, upsert, merge |
+| Snowflake     | `snowflake`     | append, replace, upsert        |
+| PostgreSQL    | `postgres`      | append, replace, upsert        |
+| S3            | `s3`            | append, replace                |
+| JSON          | `json`          | append, replace                |
+| Webhook       | `webhook`       | append                         |
+| Elasticsearch | `elasticsearch` | append, upsert                 |
 
 ## Connector configuration
 
@@ -68,11 +68,11 @@ connection: mongodb://user:pass@host:27017/dbname
 
 ## Building custom connectors
 
-If DataFlow doesn't support your data source, you can build a custom connector:
+If Acme doesn't support your data source, you can build a custom connector:
 
 ```python
 # connectors/my_custom_source.py
-from dataflow.sdk import SourceConnector, Row
+from acme.sdk import SourceConnector, Row
 
 class MyCustomSource(SourceConnector):
     """Read data from a custom API."""
@@ -109,14 +109,14 @@ sources:
 ```
 
 > [!note]
-> Custom connectors have full access to the DataFlow SDK. See the [[api-reference/connector|Connector API]] for the complete interface.
+> Custom connectors have full access to the Acme SDK. See the [[api-reference/connector|Connector API]] for the complete interface.
 
 ## Health checks
 
-DataFlow periodically checks connector health. You can see the status with:
+Acme periodically checks connector health. You can see the status with:
 
 ```bash
-dataflow connectors status
+acme connectors status
 ```
 
 ```

@@ -82,7 +82,7 @@ GET /api/v1/connectors/:name/health
 ### Source connector interface
 
 ```python
-from dataflow.sdk import SourceConnector, Row, ConnectorConfig
+from acme.sdk import SourceConnector, Row, ConnectorConfig
 from typing import Iterator, Optional
 from datetime import datetime
 
@@ -148,7 +148,7 @@ class MySource(SourceConnector):
 ### Destination connector interface
 
 ```python
-from dataflow.sdk import DestinationConnector, Row, WriteMode
+from acme.sdk import DestinationConnector, Row, WriteMode
 from typing import List
 
 class MyDestination(DestinationConnector):
@@ -177,8 +177,9 @@ class MyDestination(DestinationConnector):
 
 > [!tip] Connector testing
 > Use the built-in test harness to validate your connector:
+>
 > ```bash
-> dataflow test-connector ./connectors/my_source.py \
+> acme test-connector ./connectors/my_source.py \
 >   --config '{"api_url": "http://localhost:8080", "api_key": "test"}'
 > ```
 

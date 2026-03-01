@@ -67,7 +67,7 @@ POST /api/v1/scheduler/jobs/:pipeline/resume
 
 ## Cron expressions
 
-DataFlow uses standard cron expressions with an optional seconds field:
+Acme uses standard cron expressions with an optional seconds field:
 
 ```
 ┌───────── minute (0-59)
@@ -81,14 +81,14 @@ DataFlow uses standard cron expressions with an optional seconds field:
 
 ### Common schedules
 
-| Expression | Description |
-|------------|-------------|
-| `*/5 * * * *` | Every 5 minutes |
-| `0 * * * *` | Every hour |
-| `0 */6 * * *` | Every 6 hours |
-| `0 2 * * *` | Daily at 2:00 AM |
-| `0 8 * * 1-5` | Weekdays at 8:00 AM |
-| `0 0 1 * *` | First day of every month |
+| Expression    | Description              |
+| ------------- | ------------------------ |
+| `*/5 * * * *` | Every 5 minutes          |
+| `0 * * * *`   | Every hour               |
+| `0 */6 * * *` | Every 6 hours            |
+| `0 2 * * *`   | Daily at 2:00 AM         |
+| `0 8 * * 1-5` | Weekdays at 8:00 AM      |
+| `0 0 1 * *`   | First day of every month |
 
 ## Dependency scheduling
 
@@ -128,7 +128,7 @@ trigger:
 ```bash
 curl -X POST \
   -H "X-Webhook-Secret: ${WEBHOOK_SECRET}" \
-  https://dataflow.example.com/api/trigger/on-demand-sync
+  https://acme.example.com/api/trigger/on-demand-sync
 ```
 
 > [!warning] Webhook security
@@ -140,15 +140,15 @@ Prevent overlapping runs:
 
 ```yaml
 scheduler:
-  concurrency: 1          # Max concurrent runs
-  queue_overflow: skip     # skip | queue | replace
+  concurrency: 1 # Max concurrent runs
+  queue_overflow: skip # skip | queue | replace
 ```
 
-| Strategy | Behavior |
-|----------|----------|
-| `skip` | Drop the new run if one is already running |
-| `queue` | Queue the new run to start after the current one |
-| `replace` | Cancel the current run and start a new one |
+| Strategy  | Behavior                                         |
+| --------- | ------------------------------------------------ |
+| `skip`    | Drop the new run if one is already running       |
+| `queue`   | Queue the new run to start after the current one |
+| `replace` | Cancel the current run and start a new one       |
 
 ## SDK usage
 

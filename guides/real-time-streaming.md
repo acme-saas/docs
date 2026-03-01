@@ -4,7 +4,7 @@ title: Real-time Streaming
 
 # Real-time Streaming
 
-DataFlow supports real-time data processing through Change Data Capture (CDC) and message queue connectors. This guide covers setting up streaming pipelines.
+Acme supports real-time data processing through Change Data Capture (CDC) and message queue connectors. This guide covers setting up streaming pipelines.
 
 ## Streaming vs. batch
 
@@ -19,12 +19,12 @@ graph LR
     end
 ```
 
-| Feature | Batch | Streaming |
-|---------|-------|-----------|
-| Latency | Minutes to hours | Seconds |
-| Throughput | Higher | Lower |
-| Complexity | Lower | Higher |
-| Use case | Analytics, reporting | Real-time dashboards, alerts |
+| Feature    | Batch                | Streaming                    |
+| ---------- | -------------------- | ---------------------------- |
+| Latency    | Minutes to hours     | Seconds                      |
+| Throughput | Higher               | Lower                        |
+| Complexity | Lower                | Higher                       |
+| Use case   | Analytics, reporting | Real-time dashboards, alerts |
 
 ## PostgreSQL CDC
 
@@ -44,7 +44,7 @@ max_wal_senders = 4
 2. Create a publication:
 
 ```sql
-CREATE PUBLICATION dataflow_pub FOR TABLE users, orders;
+CREATE PUBLICATION acme_pub FOR TABLE users, orders;
 ```
 
 ### Pipeline configuration
@@ -58,8 +58,8 @@ sources:
     name: users_cdc
     connection: ${DATABASE_URL}
     mode: cdc
-    publication: dataflow_pub
-    slot: dataflow_users_slot
+    publication: acme_pub
+    slot: acme_users_slot
     tables:
       - public.users
 
@@ -78,8 +78,9 @@ destinations:
 
 > [!caution] Replication slots
 > Unused replication slots prevent PostgreSQL from cleaning up WAL files, which can fill your disk. Always clean up slots when decommissioning a pipeline:
+>
 > ```sql
-> SELECT pg_drop_replication_slot('dataflow_users_slot');
+> SELECT pg_drop_replication_slot('acme_users_slot');
 > ```
 
 ## Kafka
@@ -98,7 +99,7 @@ sources:
       - kafka2:9092
       - kafka3:9092
     topic: user-events
-    group_id: dataflow-consumer
+    group_id: acme-consumer
     format: json
     start_offset: latest
 
@@ -124,7 +125,7 @@ graph TB
         P2[Partition 2]
     end
 
-    subgraph DataFlow Consumer Group
+    subgraph Acme Consumer Group
         C1[Worker 1]
         C2[Worker 2]
     end
@@ -134,14 +135,14 @@ graph TB
     P2 --> C2
 ```
 
-DataFlow automatically distributes partitions across workers. Add more workers to increase parallelism.
+Acme automatically distributes partitions across workers. Add more workers to increase parallelism.
 
 ## Monitoring streaming pipelines
 
 Streaming pipelines run continuously, so monitoring is essential:
 
 ```bash
-dataflow status --streaming
+acme status --streaming
 ```
 
 ```

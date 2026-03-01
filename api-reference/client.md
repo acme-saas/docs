@@ -4,41 +4,41 @@ title: Client API
 
 # Client API
 
-The DataFlow client is the entry point for all SDK interactions. Initialize it once and use it across your application.
+The Acme client is the entry point for all SDK interactions. Initialize it once and use it across your application.
 
 ## Installation
 
 ```bash
-pip install dataflow-sdk
+pip install acme-sdk
 ```
 
 ## Initialization
 
 ```python
-from dataflow import DataFlowClient
+from acme import AcmeClient
 
 # Using an API key
-client = DataFlowClient(
-    base_url="https://dataflow.example.com",
+client = AcmeClient(
+    base_url="https://acme.example.com",
     api_key="df_key_abc123..."
 )
 
 # Using OAuth token
-client = DataFlowClient(
-    base_url="https://dataflow.example.com",
+client = AcmeClient(
+    base_url="https://acme.example.com",
     token="eyJhbGciOiJSUzI1NiIs..."
 )
 
 # Using environment variables
-# Reads DATAFLOW_URL and DATAFLOW_API_KEY
-client = DataFlowClient.from_env()
+# Reads ACME_URL and ACME_API_KEY
+client = AcmeClient.from_env()
 ```
 
 ## Configuration options
 
 ```python
-client = DataFlowClient(
-    base_url="https://dataflow.example.com",
+client = AcmeClient(
+    base_url="https://acme.example.com",
     api_key="df_key_abc123...",
     timeout=30,           # Request timeout in seconds
     max_retries=3,        # Auto-retry failed requests
@@ -82,11 +82,11 @@ print(f"Next run: {status.next_run_at}")
 ## JavaScript/TypeScript
 
 ```typescript
-import { DataFlowClient } from "@dataflow/sdk";
+import { AcmeClient } from "@acme/sdk";
 
-const client = new DataFlowClient({
-  baseUrl: "https://dataflow.example.com",
-  apiKey: process.env.DATAFLOW_API_KEY,
+const client = new AcmeClient({
+  baseUrl: "https://acme.example.com",
+  apiKey: process.env.ACME_API_KEY,
 });
 
 // List pipelines
@@ -102,8 +102,8 @@ console.log(`Processed ${result.rowsLoaded} rows`);
 ## Error handling
 
 ```python
-from dataflow.exceptions import (
-    DataFlowError,
+from acme.exceptions import (
+    AcmeError,
     AuthenticationError,
     PipelineNotFoundError,
     RateLimitError,
@@ -117,7 +117,7 @@ except PipelineNotFoundError:
     print("Pipeline does not exist")
 except RateLimitError as e:
     print(f"Rate limited. Retry after {e.retry_after}s")
-except DataFlowError as e:
+except AcmeError as e:
     print(f"Unexpected error: {e}")
 ```
 

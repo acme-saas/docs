@@ -1,74 +1,52 @@
 ---
-title: DataFlow Documentation
+title: Acme Docs
 description: The modern data pipeline platform for teams that move fast.
 ---
 
-# DataFlow
+# What is Acme?
 
-**DataFlow** is an open-source data pipeline platform that makes it easy to build, test, and deploy data workflows. Connect any source, transform your data, and deliver it anywhere — all with simple configuration files.
+**Acme** is an open-source data pipeline platform that makes it easy to build, test, and deploy data workflows. Connect any source, transform your data, and deliver it anywhere — all with simple configuration files.
 
-> [!tip] New to DataFlow?
+> [!tip] New to Acme?
 > Start with the [[getting-started/quickstart|Quickstart Guide]] to build your first pipeline in under 5 minutes.
 
-## Why DataFlow?
+---
 
-- **Simple by default** — YAML config files, not code
-- **Powerful when needed** — custom transforms in Python or JavaScript
-- **Built for teams** — version control, testing, and CI/CD friendly
-- **Real-time ready** — batch and streaming in one platform
+## Prerequisites
 
-## How it works
+No prior experience with data pipeline tools is required, but you'll get the most out of Acme if you're comfortable with:
 
-```mermaid
-graph LR
-    A[Sources] -->|Extract| B[DataFlow Engine]
-    B -->|Transform| C[Processing]
-    C -->|Load| D[Destinations]
+- **Command line** — installing packages, running commands
+- **YAML** — Acme pipelines are defined in YAML config files
+- **Python basics** — needed for writing [[guides/custom-transforms|custom transforms]] (optional)
+- **SQL or a database** — helpful for the [[guides/connecting-databases|database guides]] (optional)
 
-    style A fill:#818cf8,stroke:#4f46e5,color:#fff
-    style B fill:#34d399,stroke:#059669,color:#fff
-    style C fill:#fbbf24,stroke:#d97706,color:#fff
-    style D fill:#f87171,stroke:#dc2626,color:#fff
-```
+---
 
-## Quick links
+## How to use the docs
 
-| Section                                        | Description                     |
-| ---------------------------------------------- | ------------------------------- |
-| [[getting-started/installation\|Installation]] | Install DataFlow on your system |
-| [[getting-started/quickstart\|Quickstart]]     | Build your first pipeline       |
-| [[concepts/architecture\|Architecture]]        | Understand how DataFlow works   |
-| [[guides/connecting-databases\|Guides]]        | Step-by-step tutorials          |
-| [[api-reference/client\|API Reference]]        | Complete API documentation      |
+The docs are organized into five sections. Browse by topic or follow the recommended path below if you're just getting started.
 
-## Example pipeline
+| Section                                          | Description                                                           |
+| ------------------------------------------------ | --------------------------------------------------------------------- |
+| [[getting-started/README\|Getting Started]]      | Install Acme and build your first pipeline                            |
+| [[concepts/README\|Core Concepts]]               | Understand pipelines, connectors, transforms, and architecture        |
+| [[configuration/README\|Configuration]]          | Config files, environment variables, and all available settings       |
+| [[guides/README\|Guides]]                        | Step-by-step tutorials for databases, deployment, monitoring, and more |
+| [[api-reference/README\|API Reference]]          | Full REST API documentation and SDK reference                         |
 
-```yaml
-# dataflow.yml
-name: user-analytics
-version: "1.0"
+**Not sure where to start?** Follow [[getting-started/quickstart|Quickstart]] to build your first pipeline in 5 minutes, then read [[concepts/architecture|Architecture]] to understand how everything fits together.
 
-sources:
-  - type: postgres
-    name: users_db
-    connection: ${DATABASE_URL}
-    query: "SELECT * FROM users WHERE updated_at > :last_run"
+---
 
-transforms:
-  - type: filter
-    condition: "status = 'active'"
-  - type: map
-    fields:
-      full_name: "first_name || ' ' || last_name"
-      signup_year: "EXTRACT(YEAR FROM created_at)"
+## Join the community
 
-destinations:
-  - type: bigquery
-    dataset: analytics
-    table: active_users
-    write_mode: upsert
-    key: user_id
-```
+Acme is built in the open. Get help, share what you've built, and shape the roadmap:
 
-> [!info] Looking for the changelog?
-> See [[changelog|what's new in DataFlow v2.4]].
+- [GitHub](https://github.com/acme/acme) — source code, issues, and releases
+- [Discord](https://discord.gg/acme) — chat with the team and other users
+- [Forum](https://community.acme.io) — longer discussions, Q&A, and showcases
+
+Found a bug or have a feature request? [Open an issue](https://github.com/acme/acme/issues) on GitHub.
+
+---

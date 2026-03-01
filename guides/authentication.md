@@ -4,7 +4,7 @@ title: Authentication
 
 # Authentication
 
-When running DataFlow's API server, you'll want to secure access. DataFlow supports API keys for simple setups and OAuth 2.0 for production environments.
+When running Acme's API server, you'll want to secure access. Acme supports API keys for simple setups and OAuth 2.0 for production environments.
 
 ## API keys
 
@@ -13,7 +13,7 @@ The simplest authentication method. Generate a key and include it in requests.
 ### Generate a key
 
 ```bash
-dataflow auth create-key --name "CI Pipeline" --scope "pipelines:read,pipelines:run"
+acme auth create-key --name "CI Pipeline" --scope "pipelines:read,pipelines:run"
 ```
 
 ```
@@ -30,41 +30,42 @@ Store this key securely — it won't be shown again.
 ```bash
 # HTTP header
 curl -H "Authorization: Bearer df_key_a1b2c3d4e5f6..." \
-  https://dataflow.example.com/api/v1/pipelines
+  https://acme.example.com/api/v1/pipelines
 
 # Query parameter (not recommended)
-curl "https://dataflow.example.com/api/v1/pipelines?api_key=df_key_..."
+curl "https://acme.example.com/api/v1/pipelines?api_key=df_key_..."
 ```
 
 > [!danger] API key security
+>
 > - Never commit API keys to version control
-> - Rotate keys regularly with `dataflow auth rotate-key`
+> - Rotate keys regularly with `acme auth rotate-key`
 > - Use the minimum required scope for each key
 > - Prefer OAuth 2.0 for production environments
 
 ### Available scopes
 
-| Scope | Description |
-|-------|-------------|
-| `pipelines:read` | View pipeline definitions and status |
-| `pipelines:run` | Trigger pipeline runs |
-| `pipelines:write` | Create, update, delete pipelines |
-| `admin` | Full access to all resources |
+| Scope             | Description                          |
+| ----------------- | ------------------------------------ |
+| `pipelines:read`  | View pipeline definitions and status |
+| `pipelines:run`   | Trigger pipeline runs                |
+| `pipelines:write` | Create, update, delete pipelines     |
+| `admin`           | Full access to all resources         |
 
 ## OAuth 2.0
 
-For production environments, DataFlow supports OAuth 2.0 with your identity provider.
+For production environments, Acme supports OAuth 2.0 with your identity provider.
 
 ### Configuration
 
 ```yaml
-# dataflow.yml
+# acme.yml
 auth:
   provider: oauth2
   issuer: https://auth.example.com
   client_id: ${OAUTH_CLIENT_ID}
   client_secret: ${OAUTH_CLIENT_SECRET}
-  audience: https://dataflow.example.com
+  audience: https://acme.example.com
   scopes:
     - openid
     - profile
@@ -76,7 +77,7 @@ auth:
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant DF as DataFlow API
+    participant DF as Acme API
     participant IDP as Identity Provider
 
     U->>DF: Request /api/v1/pipelines
@@ -99,20 +100,20 @@ sequenceDiagram
 
 ### Role mapping
 
-Map OAuth claims to DataFlow roles:
+Map OAuth claims to Acme roles:
 
 ```yaml
 auth:
   role_mapping:
     admin:
       claim: groups
-      values: ["dataflow-admins"]
+      values: ["acme-admins"]
     editor:
       claim: groups
-      values: ["dataflow-editors", "data-team"]
+      values: ["acme-editors", "data-team"]
     viewer:
       claim: groups
-      values: ["dataflow-viewers", "engineering"]
+      values: ["acme-viewers", "engineering"]
 ```
 
 > [!note]
@@ -120,14 +121,14 @@ auth:
 
 ## Session management
 
-For the web dashboard, DataFlow uses secure cookies:
+For the web dashboard, Acme uses secure cookies:
 
 ```yaml
 auth:
   session:
     secret: ${SESSION_SECRET}
-    max_age: 86400        # 24 hours
-    secure: true          # HTTPS only
+    max_age: 86400 # 24 hours
+    secure: true # HTTPS only
     same_site: strict
 ```
 

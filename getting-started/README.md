@@ -4,11 +4,11 @@ title: Getting Started
 
 # Getting Started
 
-Get up and running with DataFlow in minutes. This section walks you through everything from installation to deploying your first pipeline.
+Get up and running with Acme in minutes. This section walks you through everything from installation to deploying your first pipeline.
 
 ```mermaid
 graph TD
-    A[Install DataFlow] --> B[Create a project]
+    A[Install Acme] --> B[Create a project]
     B --> C[Define your pipeline]
     C --> D[Run locally]
     D --> E[Deploy to production]
@@ -21,7 +21,7 @@ graph TD
 
 1. **[[getting-started/installation|Installation]]** — Install the CLI and set up your environment
 2. **[[getting-started/quickstart|Quickstart]]** — Build a working pipeline in 5 minutes
-3. **[[getting-started/project-structure|Project Structure]]** — Understand how a DataFlow project is organized
+3. **[[getting-started/project-structure|Project Structure]]** — Understand how a Acme project is organized
 4. **[[getting-started/first-pipeline|Your First Pipeline]]** — A deeper walkthrough of pipeline concepts
 
 > [!tip] Already familiar with ETL tools?
@@ -29,9 +29,9 @@ graph TD
 
 ## System requirements
 
-| Requirement | Minimum | Recommended |
-|------------|---------|-------------|
-| Python | 3.10+ | 3.12+ |
-| Memory | 512 MB | 2 GB |
-| Disk | 100 MB | 1 GB |
-| OS | Linux, macOS | Linux |
+| Requirement | Minimum      | Recommended |
+| ----------- | ------------ | ----------- |
+| Python      | 3.10+        | 3.12+       |
+| Memory      | 512 MB       | 2 GB        |
+| Disk        | 100 MB       | 1 GB        |
+| OS          | Linux, macOS | Linux       |

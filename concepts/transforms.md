@@ -4,7 +4,7 @@ title: Transforms
 
 # Transforms
 
-Transforms are the processing steps that shape your data between extraction and loading. DataFlow includes a set of built-in transforms and supports custom functions in Python.
+Transforms are the processing steps that shape your data between extraction and loading. Acme includes a set of built-in transforms and supports custom functions in Python.
 
 ## Transform pipeline
 
@@ -85,7 +85,7 @@ Remove duplicate rows.
 ```yaml
 - type: deduplicate
   key: [email]
-  keep: latest  # latest | earliest | first
+  keep: latest # latest | earliest | first
 ```
 
 ### sort
