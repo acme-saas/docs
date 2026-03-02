@@ -1,13 +1,13 @@
 .site-navbar-cta-button,
 .mobile-nav-cta-button {
-  background-color: darkcyan;
+  background-color: oklch(51.1% 0.262 276.966);
 }
 
 .site-tree-item-self.is-current {
-  color: darkcyan;
+  color: oklch(51.1% 0.262 276.966);
   font-weight: 600;
 }
 
 .toc-item-self[aria-current="true"] {
-  color: darkcyan;
+  color: oklch(51.1% 0.262 276.966);
 }
