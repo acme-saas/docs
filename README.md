@@ -7,7 +7,7 @@ description: The modern data pipeline platform for teams that move fast.
 
 **Acme** is an open-source data pipeline platform that makes it easy to build, test, and deploy data workflows. Connect any source, transform your data, and deliver it anywhere — all with simple configuration files.
 
-> [!tip] New to Acme?
+> [!note] New to Acme?
 > Start with the [[getting-started/quickstart|Quickstart Guide]] to build your first pipeline in under 5 minutes.
 
 ---
@@ -27,13 +27,13 @@ No prior experience with data pipeline tools is required, but you'll get the mos
 
 The docs are organized into five sections. Browse by topic or follow the recommended path below if you're just getting started.
 
-| Section                                          | Description                                                           |
-| ------------------------------------------------ | --------------------------------------------------------------------- |
-| [[getting-started/README\|Getting Started]]      | Install Acme and build your first pipeline                            |
-| [[concepts/README\|Core Concepts]]               | Understand pipelines, connectors, transforms, and architecture        |
-| [[configuration/README\|Configuration]]          | Config files, environment variables, and all available settings       |
-| [[guides/README\|Guides]]                        | Step-by-step tutorials for databases, deployment, monitoring, and more |
-| [[api-reference/README\|API Reference]]          | Full REST API documentation and SDK reference                         |
+| Section                                     | Description                                                            |
+| ------------------------------------------- | ---------------------------------------------------------------------- |
+| [[getting-started/README\|Getting Started]] | Install Acme and build your first pipeline                             |
+| [[concepts/README\|Core Concepts]]          | Understand pipelines, connectors, transforms, and architecture         |
+| [[configuration/README\|Configuration]]     | Config files, environment variables, and all available settings        |
+| [[guides/README\|Guides]]                   | Step-by-step tutorials for databases, deployment, monitoring, and more |
+| [[api-reference/README\|API Reference]]     | Full REST API documentation and SDK reference                          |
 
 **Not sure where to start?** Follow [[getting-started/quickstart|Quickstart]] to build your first pipeline in 5 minutes, then read [[concepts/architecture|Architecture]] to understand how everything fits together.
 
