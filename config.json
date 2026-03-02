@@ -24,6 +24,9 @@
       "href": "#"
     }
   },
+  "theme": {
+    "showModeSwitch": true
+  },
   "footer": {
     "navigation": [
       {

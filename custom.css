@@ -1,0 +1,13 @@
+.site-navbar-cta-button,
+.mobile-nav-cta-button {
+  background-color: darkcyan;
+}
+
+.site-tree-item-self.is-current {
+  color: darkcyan;
+  font-weight: 600;
+}
+
+.toc-item-self[aria-current="true"] {
+  color: darkcyan;
+}
