@@ -14,7 +14,7 @@ Acme includes a web dashboard for monitoring pipeline status:
 acme dashboard --port 3000
 ```
 
-![Acme Monitoring Dashboard](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=500&fit=crop)
+![[dashboard.png]]
 
 The dashboard shows:
 
