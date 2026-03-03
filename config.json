@@ -25,7 +25,8 @@
     }
   },
   "theme": {
-    "showModeSwitch": true
+    "showModeSwitch": true,
+    "theme": "letterpress"
   },
   "footer": {
     "navigation": [
