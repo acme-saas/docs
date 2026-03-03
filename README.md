@@ -1,5 +1,4 @@
 ---
-title: Acme Docs
 description: The modern data pipeline platform for teams that move fast.
 ---
 
