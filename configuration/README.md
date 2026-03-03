@@ -1,3 +1,6 @@
+---
+description: Overview of Acme configuration sources and precedence, from command-line flags to project and user config files.
+---
 
 # Configuration
 

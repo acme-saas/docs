@@ -1,3 +1,6 @@
+---
+description: API reference for managing pipeline schedules, including cron expressions, dependency-based triggers, webhook triggers, and concurrency control.
+---
 # Scheduler API
 
 The Scheduler manages when and how pipelines run. It supports cron-based scheduling, manual triggers, webhook triggers, and dependency-based execution.

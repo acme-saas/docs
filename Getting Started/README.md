@@ -1,3 +1,7 @@
+---
+description: Get up and running with Acme in minutes. Covers installation, quickstart, project structure, and building your first pipeline.
+---
+
 # Getting Started
 
 Get up and running with Acme in minutes. This section walks you through everything from installation to deploying your first pipeline.

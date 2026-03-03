@@ -1,3 +1,7 @@
+---
+description: Deep dive into Acme's pipeline engine architecture, covering the five processing stages and the producer-consumer concurrency model.
+---
+
 # Architecture
 
 Acme is designed as a lightweight, embeddable pipeline engine. This page explains how data moves through the system and what happens at each stage.

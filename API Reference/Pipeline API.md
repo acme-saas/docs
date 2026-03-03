@@ -1,3 +1,6 @@
+---
+description: REST API reference for creating, updating, triggering, and inspecting pipeline runs, including endpoints, parameters, and SDK usage examples.
+---
 # Pipeline API
 
 The Pipeline API lets you manage pipeline definitions, trigger runs, and inspect results programmatically.

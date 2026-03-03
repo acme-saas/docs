@@ -1,3 +1,6 @@
+---
+description: API reference for managing source and destination connectors, including endpoints for listing, testing connections, and building custom connectors.
+---
 # Connector API
 
 The Connector API provides programmatic access to manage source and destination connectors — test connections, check health, and register custom connectors.

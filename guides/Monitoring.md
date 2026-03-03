@@ -1,3 +1,7 @@
+---
+description: How to monitor Acme pipelines in production using the built-in dashboard, Prometheus metrics, Grafana integration, alerting, and structured logging.
+---
+
 # Monitoring
 
 Once your pipelines are running in production, you need visibility into their health. Acme provides built-in metrics, logging, and integrations with popular monitoring tools.

@@ -1,3 +1,6 @@
+---
+description: Overview of the Acme REST API, including authentication, response formats, rate limits, and links to all API module references.
+---
 # API Reference
 
 Acme provides a RESTful API for managing pipelines, triggering runs, and monitoring status programmatically.

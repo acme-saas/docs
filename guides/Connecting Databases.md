@@ -1,3 +1,7 @@
+---
+description: Step-by-step guide for connecting PostgreSQL, MySQL, and MongoDB as data sources in Acme, including SSL setup, incremental extraction, and CDC.
+---
+
 # Connecting Databases
 
 This guide covers setting up database connections for the most common sources: PostgreSQL, MySQL, and MongoDB.

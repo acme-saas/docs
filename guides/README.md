@@ -1,3 +1,6 @@
+---
+description: Index of step-by-step Acme tutorials covering database connections, streaming, error handling, testing, deployment, monitoring, authentication, and custom transforms.
+---
 
 # Guides
 

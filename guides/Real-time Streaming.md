@@ -1,3 +1,7 @@
+---
+description: Guide to setting up real-time data processing in Acme using PostgreSQL Change Data Capture (CDC) and Kafka streaming connectors.
+---
+
 # Real-time Streaming
 
 Acme supports real-time data processing through Change Data Capture (CDC) and message queue connectors. This guide covers setting up streaming pipelines.

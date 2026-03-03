@@ -1,3 +1,7 @@
+---
+description: How to configure error strategies (fail, retry, skip) in Acme pipelines, including dead-letter queues, backoff settings, and failure notifications.
+---
+
 # Error Handling
 
 Things break. Databases go down, APIs return errors, and data doesn't always match your expectations. This guide covers how Acme handles failures and how to configure resilient pipelines.

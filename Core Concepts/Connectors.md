@@ -1,3 +1,7 @@
+---
+description: Overview of all available source and destination connectors in Acme, including configuration examples, connection strings, and how to build custom connectors.
+---
+
 # Connectors
 
 Connectors are adapters that let Acme read from sources and write to destinations. Each connector handles the specifics of a particular system — authentication, data formats, pagination, etc.

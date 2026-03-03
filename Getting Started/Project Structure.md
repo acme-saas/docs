@@ -1,3 +1,7 @@
+---
+description: Explains the default layout of an Acme project, including key files like acme.yml, the pipelines and transforms directories, and environment configuration.
+---
+
 # Project Structure
 
 A Acme project is a directory containing configuration files, transform definitions, and optional test fixtures.

@@ -1,3 +1,7 @@
+---
+description: How to test Acme pipelines locally using validation tests, fixture-based tests, and snapshot tests before deploying to production.
+---
+
 # Testing Pipelines
 
 Every Acme pipeline can be tested locally before deployment. The `acme test` command validates your configuration, checks connections, and runs your pipeline against fixture data.

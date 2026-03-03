@@ -1,3 +1,6 @@
+---
+description: API reference for registering, testing, and managing transform functions programmatically, including the transform execution model and SDK usage.
+---
 # Transform API
 
 The Transform API lets you register, manage, and inspect transform functions programmatically.

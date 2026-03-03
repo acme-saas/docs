@@ -1,3 +1,7 @@
+---
+description: Guide to deploying Acme pipelines in production, covering single server, Docker, Kubernetes, and CI/CD integration with GitHub Actions.
+---
+
 # Deployment
 
 This guide covers deploying Acme pipelines to production environments — from a simple server to containerized infrastructure.

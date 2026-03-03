@@ -1,3 +1,6 @@
+---
+description: Release notes and version history for Acme, documenting new features, changes, and bug fixes across all releases.
+---
 
 # Changelog
 

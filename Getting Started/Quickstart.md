@@ -1,3 +1,7 @@
+---
+description: Build and run your first Acme pipeline in under 5 minutes with a step-by-step walkthrough using CSV data.
+---
+
 # Quickstart
 
 Build and run your first Acme pipeline in under 5 minutes.

@@ -1,3 +1,6 @@
+---
+description: How to manage secrets and per-environment settings using environment variables, .env files, and CI/CD integration in Acme.
+---
 # Environment Variables
 
 Environment variables are the recommended way to manage secrets (database passwords, API keys) and per-environment settings in Acme.

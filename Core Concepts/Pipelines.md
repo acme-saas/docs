@@ -1,3 +1,7 @@
+---
+description: Explains pipelines as the core unit of work in Acme, covering lifecycle, scheduling, dependencies, error handling, and multi-destination support.
+---
+
 # Pipelines
 
 A pipeline is the core unit of work in Acme. It defines where data comes from, how it's transformed, and where it goes.

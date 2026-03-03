@@ -1,3 +1,6 @@
+---
+description: Introduction to Acme's key abstractions — pipelines, connectors, transforms, schedulers, and events — and the design principles behind them.
+---
 
 # Core Concepts
 

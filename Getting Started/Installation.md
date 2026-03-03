@@ -1,3 +1,7 @@
+---
+description: How to install the Acme CLI via pip, Homebrew, or Docker, plus post-installation setup, shell completions, and upgrading.
+---
+
 # Installation
 
 Acme can be installed via pip, Homebrew, or Docker.

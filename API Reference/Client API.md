@@ -1,3 +1,6 @@
+---
+description: Reference for the Acme SDK client, covering initialization, configuration options, basic usage patterns, and error handling in Python and TypeScript.
+---
 # Client API
 
 The Acme client is the entry point for all SDK interactions. Initialize it once and use it across your application.

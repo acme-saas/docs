@@ -1,3 +1,7 @@
+---
+description: A hands-on tutorial for building a real-world pipeline that reads from PostgreSQL, transforms data with custom Python functions, and loads results into BigQuery.
+---
+
 # Your First Pipeline
 
 This guide walks you through building a real-world pipeline that reads from a PostgreSQL database, transforms the data, and loads it into a data warehouse.

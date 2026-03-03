@@ -1,3 +1,6 @@
+---
+description: Guidelines for contributing to Acme, including development setup, project structure, and how to submit pull requests.
+---
 # Contributing to Acme
 
 We welcome contributions of all kinds — bug fixes, new connectors, documentation improvements, and feature ideas.

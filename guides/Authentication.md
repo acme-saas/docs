@@ -1,3 +1,7 @@
+---
+description: How to secure Acme's API with API keys or OAuth 2.0, including key generation, scopes, provider configuration, role mapping, and session management.
+---
+
 # Authentication
 
 When running Acme's API server, you'll want to secure access. Acme supports API keys for simple setups and OAuth 2.0 for production environments.

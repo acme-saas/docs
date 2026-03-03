@@ -1,3 +1,6 @@
+---
+description: Reference for subscribing to pipeline lifecycle events via webhooks, Server-Sent Events, or polling. Covers event types, payloads, and filtering.
+---
 # Events API
 
 Acme emits events at every stage of pipeline execution. Use the Events API to subscribe to events, build custom dashboards, or integrate with external monitoring systems.

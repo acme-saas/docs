@@ -1,3 +1,7 @@
+---
+description: Guide to writing custom Python transforms in Acme, covering row transforms, batch operations, API enrichment, stateful transforms, and performance tips.
+---
+
 # Writing Custom Transforms
 
 When built-in transforms aren't enough, Acme lets you write custom data transformations in Python. This guide covers everything from simple row transforms to batch operations and async processing.
